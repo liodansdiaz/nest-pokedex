@@ -71,6 +71,8 @@ export class PokemonService {
     catch (error) {
         this.handleExceptions(error);
     }
+
+    
   }
 
   async remove(id: string) {
