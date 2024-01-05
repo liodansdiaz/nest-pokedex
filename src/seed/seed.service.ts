@@ -6,13 +6,15 @@ import { CreatePokemonDto } from '../pokemon/dto/create-pokemon.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Pokemon } from 'src/pokemon/entities/pokemon.entity';
 import { Model } from 'mongoose';
+import { AxiosAdapter } from 'src/common/adapters/axios.adapter';
 
 @Injectable()
 export class SeedService {
 
   constructor(
     @InjectModel(Pokemon.name)
-    private readonly pokemonModel: Model<Pokemon>
+    private readonly pokemonModel: Model<Pokemon>,
+    private readonly http: AxiosAdapter
   ){}
 
   private readonly axios: AxiosInstance = axios;
@@ -53,7 +55,7 @@ export class SeedService {
   //---------------------------------------------------------------------------------------------
     //3ra variante (rapida tambien, crea un arreglo de pokemon y luego lo inserta con el metodo InsertMany)
     //es mas legible y sencilla
-    const {data} = await this.axios.get<PokeResponse>('https://pokeapi.co/api/v2/pokemon?limit=200');
+    const data  = await this.http.get<PokeResponse>('https://pokeapi.co/api/v2/pokemon?limit=200');
 
     const pokemonToInsert: {name: string, no: number}[] = [];
 
