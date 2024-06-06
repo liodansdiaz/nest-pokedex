@@ -36,6 +36,9 @@ http://localhost:3000/api/v2/seed
 ```
 
 
+https://mega.nz/file/Zr93SAxZ#KVOrGaJsFx4i9KW9A_Dgty7uQSbIkEPoxWoGDrDDiUs
+
+
 ## Stack usado
 * MonogDB
 * Nest
